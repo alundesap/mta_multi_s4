@@ -1,0 +1,18 @@
+ID: mta_multi_s4
+_schema-version: '2.1'
+description: Multi-Target Application with Multi-Tenant S/4 SDK
+version: 0.0.1
+
+modules:
+ - name: web
+   type: html5
+   path: web
+
+ - name: nodejs
+   type: nodejs
+   path: nodejs
+   provides:
+    - name: nodejs_api
+      properties:
+         url: ${default-url}
+
