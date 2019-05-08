@@ -1,0 +1,40 @@
+{
+	"xsappname": "mta_multi_s4",
+	"tenant-mode": "shared",
+	"description": "Multi-Target Application with Multi-Tenant S/4 SDK",
+	"scopes": [
+		{
+			"name": "$XSAPPNAME.Callback",
+			"description": "With this scope set, the callbacks for tenant onboarding, offboarding and getDependencies can be called.",
+			"grant-as-authority-to-apps": [
+				"$XSAPPNAME(application,sap-provisioning,tenant-onboarding)"
+			]
+		},
+		{
+			"name": "$XSAPPNAME.view", 
+			"description": "View data"
+		},
+		{
+			"name": "$XSAPPNAME.create",
+			"description": "Create data"
+		}
+
+	],
+	"role-templates":[
+		{
+			"name": "MultiS4Manager", 
+			"description": "Role for creating and viewing data",
+			"scope-references": [ 
+				"$XSAPPNAME.create",
+				"$XSAPPNAME.view" 
+			]
+		},
+		{
+			"name": "MultiS4User",
+			"description": "Role for viewing data only",
+			"scope-references":  [ 
+				"$XSAPPNAME.view" 
+			]
+		}
+	]
+}
